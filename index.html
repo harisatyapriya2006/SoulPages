@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SoulPages — My Personal Diary</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-aurora" aria-hidden="true"></div>
+  <div class="particles" id="particles" aria-hidden="true"></div>
+
+  <header>
+    <div class="brand">
+  <img src="logo.png" alt="SoulPages Logo" class="logo-img" />
+  <div>
+    <div class="title">SoulPages</div>
+    <div class="sub">A diary that breathes in pastel colors</div>
+  </div>
+</div>
+
+
+    <div class="row">
+      <button class="btn small" id="btnExport">Export</button>
+      <label class="btn small ghost" for="importFile">Import JSON</label>
+      <input id="importFile" type="file" accept="application/json" class="hidden" />
+      <button class="btn small ghost" id="btnLock">Lock</button>
+    </div>
+  </header>
+
+  <!-- Lock Screens -->
+  <main id="lockScreens">
+    <section id="setupLock" class="card pad lock">
+      <h3>Set a Passcode</h3>
+      <p class="muted">Create a 4–8 digit passcode to keep your diary private (stored locally).</p>
+      <div class="row">
+        <input id="newPass" type="password" maxlength="8" placeholder="New passcode" />
+        <input id="newPass2" type="password" maxlength="8" placeholder="Confirm passcode" />
+      </div>
+      <div class="row" style="margin-top:10px;">
+        <button class="btn" id="savePass">Save Passcode</button>
+      </div>
+      <p class="help">If you forget it, you can clear browser data to reset.</p>
+    </section>
+
+    <section id="enterLock" class="card pad lock hidden">
+      <h3>Enter Passcode</h3>
+      <div class="row">
+        <input id="enterPass" type="password" maxlength="8" placeholder="Enter passcode" />
+      </div>
+      <div class="row" style="margin-top:10px;">
+        <button class="btn" id="unlock">Unlock</button>
+        <button class="btn ghost" id="resetAll">Reset App</button>
+      </div>
+      <p class="help">Reset clears all data and passcode. Export first if needed.</p>
+    </section>
+  </main>
+
+  <!-- Main App -->
+  <main id="app" class="hidden">
+    <section class="wrap">
+      <!-- Left -->
+      <div class="card pad">
+        <div class="toolbar">
+          <div class="left">
+            <input type="date" id="datePicker" />
+            <button class="btn small ghost" id="btnToday">Today</button>
+          </div>
+          <div class="right">
+            <button class="btn small" id="btnSave">Save</button>
+            <button class="btn small warn" id="btnDelete">Delete</button>
+          </div>
+        </div>
+
+        <div class="quote" id="quoteBox">
+          <div>🕊️</div>
+          <div>
+            <div id="quoteText"></div>
+            <div class="muted" id="quoteAuthor"></div>
+          </div>
+        </div>
+
+        <textarea id="editor" placeholder="Write your heart here..."></textarea>
+
+        <div class="row" style="margin-top:10px; justify-content:space-between;">
+          <div class="row">
+            <label class="btn small ghost" for="imgInput">Add Image</label>
+            <input id="imgInput" type="file" accept="image/*" class="hidden" multiple />
+            <button class="btn small ghost" id="recBtn">🎙️ Voice</button>
+          </div>
+          <div class="muted" id="autosaveMsg">Auto-saved.</div>
+        </div>
+
+        <div class="gallery" id="attachments" style="margin-top:12px;"></div>
+      </div>
+
+      <!-- Right -->
+      <div class="card pad">
+        <h3>Timeline</h3>
+        <div class="chips" id="timeline"></div>
+      </div>
+    </section>
+
+    <footer>Made with 💕 by Satya — One page, one color, one day.</footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
